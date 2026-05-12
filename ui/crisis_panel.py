@@ -2,10 +2,15 @@ from datetime import datetime
 
 import streamlit as st
 
+from ui._brand import inject_brand
+
 from config import CRISIS_TRIGGERS
 
 from data.crisis_repo import save_crisis_log
 from data.models import CrisisLog
+
+
+inject_brand()
 
 
 def render_crisis_panel(
@@ -20,7 +25,7 @@ def render_crisis_panel(
     )
 
     if st.button(
-        "🆘 Activar protocolo de apoyo",
+        "Muéstrame el siguiente paso",
         use_container_width=True
     ):
 
