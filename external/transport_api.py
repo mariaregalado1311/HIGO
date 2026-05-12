@@ -1,12 +1,9 @@
-def get_transport_incident() -> str:
-    """
-    Simula incidente de transporte.
+def get_transport_incident() -> dict:
 
-    Outputs:
-        str mensaje de incidencia
-    """
-
-    return (
-        "⚠️ Incidencia detectada en Línea 6: "
-        "retraso estimado de 18 minutos"
-    )
+    return {
+        "status": "success",
+        "message": (
+            "⚠️ Incidencia detectada en Línea 6. "
+            "Retraso estimado: 18 minutos."
+        )
+    }
