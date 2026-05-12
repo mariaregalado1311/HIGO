@@ -1,5 +1,7 @@
 import streamlit as st
 
+from ui._brand import inject_brand
+
 from config import (
     DEFAULT_CROWD_LEVEL,
     DEFAULT_NOISE_LEVEL,
@@ -14,6 +16,9 @@ from logic.routes import get_low_stress_route
 from logic.sensory import calculate_sensory_score
 
 from ui.crisis_panel import render_crisis_panel
+
+
+inject_brand()
 
 
 def render_home_page() -> None:
@@ -51,7 +56,7 @@ def render_home_page() -> None:
         st.divider()
 
         st.metric(
-            "Compatibilidad sensorial",
+            "Qué tan llevadero será este trayecto",
             f"{sensory_score}%"
         )
 
@@ -67,7 +72,9 @@ def render_home_page() -> None:
         )
 
         if stress_level >= 8:
-            st.warning("Sobrecarga sensorial alta detectada.")
+            st.warning(
+                "Tu nivel de sobrecarga es alto ahora mismo."
+            )
 
         render_crisis_panel(
             stress_level=stress_level
