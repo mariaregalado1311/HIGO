@@ -1,41 +1,19 @@
-/app.py
-→ Entry point. Registra páginas y controla navegación global.
+from data.database import initialize_database
+from ui._brand import inject_brand_styles
+from ui.home import render_home_page
 
-/config.py
-→ Fuente única de constantes, paths y límites del sistema.
 
-/ui/home.py
-→ UI principal del trayecto y estado del usuario.
+def main() -> None:
+    """
+    Entry point aplicación.
+    """
 
-/ui/crisis_panel.py
-→ UI del flujo de crisis y regulación emocional.
+    initialize_database()
 
-/ui/_brand.py
-→ CSS global y tokens visuales.
+    inject_brand_styles()
 
-/logic/routes.py
-→ Reglas puras para recomendación de rutas y scoring sensorial.
+    render_home_page()
 
-/logic/sensory.py
-→ Reglas puras para calcular desgaste cognitivo.
 
-/data/models.py
-→ Modelos de datos y validaciones estructuradas.
-
-/data/database.py
-→ Inicialización SQLite y conexión resiliente.
-
-/data/crisis_repo.py
-→ Escritura y lectura de eventos de crisis.
-
-/external/transport_api.py
-→ Wrapper externo para incidencias y transporte.
-
-/requirements.txt
-→ Dependencias pineadas exactas.
-
-/runtime.txt
-→ Runtime obligatorio para Streamlit Cloud.
-
-/.streamlit/config.toml
-→ Theme base de Streamlit.
+if __name__ == "__main__":
+    main()
